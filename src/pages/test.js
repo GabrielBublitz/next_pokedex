@@ -29,10 +29,10 @@ export default () => {
 
     return <>
         <div>
-            <input type='text' onChange={(e) => setPokeName(e.target.value.toLowerCase())}/>
+            <input type='text' onChange={(e) => setPokeName(e.target.value.toLowerCase().trim().replace(' ', '-'))}/>
             <button onClick={CallApi}>Search</button>
             <h1>
-                {poke ? (`${poke.name}`) : (`No data`)}
+                {poke ? (`${poke.name.replace('-', ' ')} #${poke.id}`) : (`No data`)}
             </h1>
             <img src={poke ? (poke.sprites.other['official-artwork'].front_default) : ''} />
         </div>

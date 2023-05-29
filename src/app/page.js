@@ -65,6 +65,17 @@ export default function Home() {
         </a>
 
         <a
+          href="/test"
+          className={styles.card}
+          rel="noopener noreferrer"
+        >
+          <h2>
+            Pokédex <span>-&gt;</span>
+          </h2>
+          <p>Search your pokémon!</p>
+        </a>
+
+        <a
           href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
           className={styles.card}
           target="_blank"
