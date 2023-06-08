@@ -7,7 +7,7 @@ import { debounce } from 'lodash'
 
 const poppins = Poppins({ weight: ['200', '300', '400', '500', '600', '700'], subsets: ['latin'] })
 
-export default () => {
+export default function Test(){
     const limit = 12;
     const [pokemons, setPokemons] = useState([])
     const [isLoading, setIsLoading] = useState(false)
