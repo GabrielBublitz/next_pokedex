@@ -1,22 +1,47 @@
-import { useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import axios from "axios"
 import Head from 'next/head'
 import PokeCard from '@/components/pokeCard'
 import { Poppins } from 'next/font/google'
+import { debounce } from 'lodash'
 
 const poppins = Poppins({ weight: ['200', '300', '400', '500', '600', '700'], subsets: ['latin'] })
 
 export default () => {
+    const limit = 12;
     const [pokemons, setPokemons] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
+    const [offset, setOffset] = useState(0);
 
     useEffect(() => {
-        GetPokeList()
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
-    async function GetPokeList() {
-        const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=30&offset=0')
-        const data = await response.data
-        setPokemons(data.results)
+    useEffect(() => {
+        fetchData()
+    }, [offset])
+
+    const handleScroll = debounce(() => {
+        if (
+            window.innerHeight + document.documentElement.scrollTop ===
+            document.documentElement.offsetHeight
+        ) {
+            setOffset((prevOffset) => prevOffset + limit);
+        }
+    }, 200)
+
+    const fetchData = async () => {
+        setIsLoading(true)
+        try {
+            const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`)
+            const data = await response.data
+            setPokemons((prevPokemons) => [...prevPokemons, ...data.results])
+            setIsLoading(false)
+        } catch (error) {
+            console.log('Erro fetching data: ', error)
+            setIsLoading(false)
+        }
     }
 
     return (
@@ -30,6 +55,7 @@ export default () => {
                     <PokeCard key={index} url={pokemon.url} />
                 )
             })) : (<div>No data</div>)}
+            {isLoading && <p>Loading...</p>}
         </div>
     )
 }
