@@ -5,7 +5,7 @@ const style = {
     display: 'inline-block'
 }
 
-export default function pokeCard({ url }) {
+export default function PokeCard({ url }) {
     const [pokemon, setPokemon] = useState([])
 
     useEffect(() => {
