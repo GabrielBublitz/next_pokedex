@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 import Card from '../components/card'
+import Link from 'next/link'
 
 export const metadata = {
   title: 'Pokédex',
@@ -21,7 +22,7 @@ export default function Home() {
       </div>
       <div className={styles.grid}>
         <Card href={'/pokedex'} title={'Pokédex'} text={'Search your pokémon!'} />
-        <a
+        <Link
           href="/about"
           className={styles.card}
           rel="noopener noreferrer"
@@ -30,8 +31,8 @@ export default function Home() {
             Catch calc<span>-&gt;</span>
           </h2>
           <p>Catch calculator</p>
-        </a>
-        <a
+        </Link>
+        <Link
           href="/odds"
           className={styles.card}
           rel="noopener noreferrer"
@@ -40,8 +41,8 @@ export default function Home() {
             Odds calc <span>-&gt;</span>
           </h2>
           <p>Odds calculator</p>
-        </a>
-        <a
+        </Link>
+        <Link
           href="/type-chart"
           className={styles.card}
           // rel="noopener noreferrer"
@@ -52,7 +53,7 @@ export default function Home() {
           <p>
             Type chart
           </p>
-        </a>
+        </Link>
       </div>
     </main>
   )
