@@ -22,16 +22,9 @@ export default function Home() {
       </div>
       <div className={styles.grid}>
         <Card href={'/pokedex'} title={'Pokédex'} text={'Search your pokémon!'} />
-        <Link
-          href="/about"
-          className={styles.card}
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Catch calc<span>-&gt;</span>
-          </h2>
-          <p>Catch calculator</p>
-        </Link>
+        <Card href={'/about'} title={'Catch calc'} text={'Catch rate!'} />
+        <Card href={'/odds'} title={'Odds calc'} text={'Odds calculator!'} />
+        <Card href={'/type-chart'} title={'Type chart'} text={'Type chart!'} />
         <Link
           href="/odds"
           className={styles.card}
