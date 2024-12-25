@@ -20,10 +20,10 @@ export default function Home() {
         />
       </div>
       <div className={styles.grid}>
-        <Card href={'/pokedex'} title={'Pokédex'} text={'Search your pokémon!'} />
-        <Card href={'/about'} title={'Catch calc'} text={'Catch rate!'} />
-        <Card href={'/odds'} title={'Odds calc'} text={'Odds calculator!'} />
-        <Card href={'/type-chart'} title={'Type chart'} text={'Type chart!'} />
+        <Card href={'/pokedex/'} title={'Pokédex'} text={'Search your pokémon!'} />
+        <Card href={'/about/'} title={'Catch calc'} text={'Catch rate!'} />
+        <Card href={'/odds/'} title={'Odds calc'} text={'Odds calculator!'} />
+        <Card href={'/type-chart/'} title={'Type chart'} text={'Type chart!'} />
       </div>
     </main>
   )
