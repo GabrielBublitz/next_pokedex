@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 import Card from '../components/card'
-import Link from 'next/link'
 
 export const metadata = {
   title: 'Pokédex',
