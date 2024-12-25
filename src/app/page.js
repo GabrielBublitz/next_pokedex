@@ -25,28 +25,6 @@ export default function Home() {
         <Card href={'/about'} title={'Catch calc'} text={'Catch rate!'} />
         <Card href={'/odds'} title={'Odds calc'} text={'Odds calculator!'} />
         <Card href={'/type-chart'} title={'Type chart'} text={'Type chart!'} />
-        <Link
-          href="/odds"
-          className={styles.card}
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Odds calc <span>-&gt;</span>
-          </h2>
-          <p>Odds calculator</p>
-        </Link>
-        <Link
-          href="/type-chart"
-          className={styles.card}
-          // rel="noopener noreferrer"
-        >
-          <h2>
-            Type chart <span>-&gt;</span>
-          </h2>
-          <p>
-            Type chart
-          </p>
-        </Link>
       </div>
     </main>
   )
