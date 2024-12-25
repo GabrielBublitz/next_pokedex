@@ -13,7 +13,8 @@ export default function Card({ href, title, text }) {
     return (
         <Link href={href} onClick={handleClick} className={styles.card} rel="noopener noreferrer">
             <h2>
-                {title} <span>-&gt;</span>
+                {title} 
+                <span>-&gt;</span>
             </h2>
             <p>{text}</p>
         </Link>
