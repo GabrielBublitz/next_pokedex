@@ -34,7 +34,16 @@ export default function Pokedex() {
     }, [currentGen])
 
     const handleScroll = debounce(() => {
-        if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 10) {
+        if ((window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 10) && prevOffset < 1025) {
+
+            if((prevOffset + limit) > 1025){
+                prevOffset =+ limit;
+                prevOffset =- (1025 - prevOffset);
+                
+                setOffset((prevOffset) => prevOffset + limit);
+                return;
+            }
+
             setOffset((prevOffset) => prevOffset + limit);
         }
     }, 200)
@@ -43,27 +52,31 @@ export default function Pokedex() {
         setIsLoading(true)
         try {
             if(currentGen){
-                console.log('gen')
-                setPokemons([])
-                const response = await axios.get(`https://pokeapi.co/api/v2/generation/${currentGen}/`)
-                const data = await response.data
-                console.log(data)
+                setPokemons([]);
+
+                const response = await axios.get(`https://pokeapi.co/api/v2/generation/${currentGen}/`);
+                const data = await response.data;
+
                 data.pokemon_species.sort((a, b) => {
                     const idA = parseInt(a.url.split('/').filter(Boolean).pop(), 10);
                     const idB = parseInt(b.url.split('/').filter(Boolean).pop(), 10);
+
                     return idA - idB;
-                })
-                console.log(data.pokemon_species)
-                setPokemons(data.pokemon_species)
+                });
+
+                setPokemons(data.pokemon_species);
             }else{
-                console.log('ngen')
-                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`)
-                const data = await response.data
-                setPokemons((prevPokemons) => [...prevPokemons, ...data.results])
+                console.log(offset);
+                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
+                const data = await response.data;
+
+                setPokemons((prevPokemons) => [...prevPokemons, ...data.results]);
             }
-            setIsLoading(false)
+
+            setIsLoading(false);
         } catch (error) {
-            console.log('Erro fetching data: ', error)
+            console.log('Erro fetching data: ', error);
+
             setIsLoading(false)
         }
     }

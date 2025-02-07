@@ -1,11 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 import Head from 'next/head'
 import '../app/globals.css';
 
 export default function TypeChart() {
     const [currentGen, setCurrentGen] = useState('1');
-    const generations = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
     const changeGen = (gen) => {
         setCurrentGen(gen);
